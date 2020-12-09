@@ -1,5 +1,6 @@
 """Car Registry model file """
 
+from uuid import uuid4
 from django.db import models
 from django.utils import timezone
 from djmoney.models.fields import MoneyField
@@ -31,7 +32,7 @@ class CarMake(AbstractRegistryModel):
         """Ensure the pk is set correctly """
 
         if not self.pk:
-            pk ='-'.join(self.name.lower().split())
+            pk = '-'.join(self.name.lower().split())
             self.id = pk
         super(CarMake, self).save(*args, **kwargs)
 
@@ -87,3 +88,10 @@ class Car(AbstractRegistryModel):
     def __str__(self):
         """ Car model string representation"""
         return f'make: {self.make.name}: model: {self.model.name}'
+
+    def save(self, *args, **kwargs):
+        """ Generate uuid to act as primary key"""
+        if not self.pk:
+            uuid = str(uuid4())
+            self.id = ''.join(uuid.split('-'))
+        super(Car, self).save(*args, **kwargs)
