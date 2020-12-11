@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djmoney',
+    'django_extensions',
     'car_registry'
 ]
 
