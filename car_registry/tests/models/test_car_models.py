@@ -28,4 +28,4 @@ class TestCarModel(TestCase):
         with pytest.raises(IntegrityError) as err:
             CarModel.objects.create(id='345', name='toyota')
         self.assertEqual(str(err.value),
-                         'NOT NULL constraint failed: models.make_id')
+                         '(1048, "Column \'make_id\' cannot be null")')
