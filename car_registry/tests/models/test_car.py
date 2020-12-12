@@ -32,7 +32,7 @@ class TestCar(TestCase):
 
     def test_when_make_is_missing(self):
         """raises an error """
-        message = 'NOT NULL constraint failed: car_registry_car.make_id'
+        message = '(1048, "Column \'make_id\' cannot be null")'
         with pytest.raises(IntegrityError) as err:
             Car.objects.create(
                 model=self.model, submodel=self.submodel,
@@ -46,7 +46,7 @@ class TestCar(TestCase):
 
     def test_when_model_is_missing(self):
         """ raises an error """
-        message = 'NOT NULL constraint failed: car_registry_car.model_id'
+        message = '(1048, "Column \'model_id\' cannot be null")'
         with pytest.raises(IntegrityError) as err:
             Car.objects.create(
                 make=self.make,
@@ -61,7 +61,7 @@ class TestCar(TestCase):
 
     def test_when_submodel_is_missing(self):
         """ raises an error """
-        message = 'NOT NULL constraint failed: car_registry_car.submodel_id'
+        message = '(1048, "Column \'submodel_id\' cannot be null")'
         with pytest.raises(IntegrityError) as err:
             Car.objects.create(
                 model=self.model,
@@ -76,7 +76,7 @@ class TestCar(TestCase):
 
     def test_when_year_is_missing(self):
         """ raises an error """
-        message = 'NOT NULL constraint failed: car_registry_car.year'
+        message = '(1048, "Column \'year\' cannot be null")'
         with pytest.raises(IntegrityError) as err:
             Car.objects.create(
                 model=self.model,
@@ -92,7 +92,7 @@ class TestCar(TestCase):
 
     def test_when_mileage_is_missing(self):
         """ raises an error """
-        message = 'NOT NULL constraint failed: car_registry_car.mileage'
+        message = '(1048, "Column \'mileage\' cannot be null")'
         with pytest.raises(IntegrityError) as err:
             Car.objects.create(
                 model=self.model,

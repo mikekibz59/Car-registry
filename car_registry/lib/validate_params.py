@@ -23,7 +23,6 @@ def validate_query_params(query_params: dict) -> None:
     for k, v in query_params.items():
 
         if v and v.isdigit() and float(v) < 0:
-            import pdb; pdb.set_trace()
             raise ParseError(f'{k} cannot be less than Zero')
 
 
